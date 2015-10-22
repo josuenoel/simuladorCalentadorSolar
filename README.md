@@ -6,16 +6,16 @@ Esta es una aplicación Web que simula el comportamiento de un calentador de agu
 
 
 ### Estrcutura de los Archivos del Proyecto
-- index.html    							<!-- Vista Principal -->
-- package.json     							<!-- Configuración npm para instalar dependencias y módulos -->
-- server.js         						<!-- Configuración de node.js -->
-- iniciarApp.sh 							<!-- Comandos necesarios para correr la Aplicación -->
-- node_modules								<!-- Contiene los modulos de node necesarios para la aplicación -->
-- public            						<!-- Contiene todos los archivos necesarios para el frontEnd de la Aplicación en Angular -->
-	- json 									<!-- Contiene Archivos JSON -->
-		- core.js      					<!-- Lógica de la aplicación Angular -->
-    	- angular.min.js 				<!-- Angular JS -->
-    	- jquery-1.11.3.min.js 			<!-- JQuery -->
+- index.html    		--> Vista Principal
+- package.json  		--> Configuración npm para instalar dependencias y módulos.
+- server.js     		--> Configuración de node.js
+- iniciarApp.s			--> Comandos necesarios para correr la Aplicación.
+- node_modules			--> Contiene los modulos de node necesarios para la aplicación.
+- public        		--> Contiene todos los archivos necesarios para el frontEnd de la Aplicación en Angular.
+	- json 			--> Contiene Archivos JSON.
+		- core.js    	-> Lógica de la aplicación Angular.
+    	- angular.min.js	-> Angular JS
+    	- jquery-1.11.3.min.js 	->JQuery
 
 
 ### Configuración del Proyecto
