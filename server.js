@@ -19,7 +19,6 @@
     app.use(methodOverride());
 
 
-
     // Rutas
     //      BASE DE DATOS
 
