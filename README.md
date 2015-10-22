@@ -16,6 +16,3 @@ Esta es una aplicación Web que simula el comportamiento de un calentador de agu
 		- core.js    	-> Lógica de la aplicación Angular.
     	- angular.min.js	-> Angular JS
     	- jquery-1.11.3.min.js 	->JQuery
-
-
-### Configuración del Proyecto
