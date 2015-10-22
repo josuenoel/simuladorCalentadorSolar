@@ -13,9 +13,9 @@ Esta es una aplicación Web que simula el comportamiento de un calentador de agu
 - node_modules								<!-- Contiene los modulos de node necesarios para la aplicación -->
 - public            						<!-- Contiene todos los archivos necesarios para el frontEnd de la Aplicación en Angular -->
 	- json 									<!-- Contiene Archivos JSON -->
-		----- core.js      					<!-- Lógica de la aplicación Angular -->
-    	----- angular.min.js 				<!-- Angular JS -->
-    	----- jquery-1.11.3.min.js 			<!-- JQuery -->
+		- core.js      					<!-- Lógica de la aplicación Angular -->
+    	- angular.min.js 				<!-- Angular JS -->
+    	- jquery-1.11.3.min.js 			<!-- JQuery -->
 
 
 ### Configuración del Proyecto
