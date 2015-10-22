@@ -5,7 +5,7 @@
 Esta es una aplicación Web que simula el comportamiento de un calentador de agua eléctrico alimentado con energía solar, en ella se pueden establecer parámetros para representar condiciones climatológicas específicas, entradas y salidas de agua y poder observar su impacto sobre el calentador de agua.
 
 
-### Estrcutura de los Archivos del Proyecto
+### Estructura de los Archivos del Proyecto
 - index.html    		--> Vista Principal
 - package.json  		--> Configuración npm para instalar dependencias y módulos.
 - server.js     		--> Configuración de node.js
