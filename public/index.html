@@ -5,13 +5,33 @@
 		<meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Silumador Calentador Solar para Agua</title>
+		<link rel="stylesheet" type="text/css" href="css/fondo.css">
 		<script src="js/jquery-1.11.3.min.js"></script>
 		<script src="js/angular.min.js"></script>
 		<script src="js/core.js"></script>
 	</head>
 
 	<body ng-controller="mainController">
-		<h1>{{test}}</h1>
+		
+
+		<!-- FONDO -->
+		<div class="sky"></div>
+		<div id="sun" class="sun"></div>
+		<div class="hills-wrapper">
+			<div id="hill-background" class="hill-background"></div>
+			<div id="hill-foreground" class="hill-foreground"></div>
+		</div>
+
+
+		<!-- RELOJ -->
+		<div id="reloj">
+			<input id="horas-reloj" type="text" min="0" max="24" ng-model="horaTexto" ng-blur="actualizarHora()">:<input id="minutos-reloj" type="text" min="0" max="59" ng-model="minutosTexto" ng-blur="actualizarHora()">
+		</div>
+		
+
+
+
+
 	</body>
 
 </html>
