@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/fondo.css">
 		<script src="js/jquery-1.11.3.min.js"></script>
 		<script src="js/angular.min.js"></script>
+		<script src="js/d3.min.js"></script>
 		<script src="js/core.js"></script>
 	</head>
 
@@ -28,7 +29,8 @@
 			<input id="horas-reloj" type="text" min="0" max="24" ng-model="horaTexto" ng-blur="actualizarHora()">:<input id="minutos-reloj" type="text" min="0" max="59" ng-model="minutosTexto" ng-blur="actualizarHora()">
 		</div>
 		
-
+		<!-- Termometro Ambiente -->
+		<div id="thermo"></div>
 
 
 

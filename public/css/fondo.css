@@ -91,3 +91,10 @@ body {
   width: 35px;
   border: none;
 }
+
+#thermo {
+  z-index: 100;
+  position: fixed;
+  right: 10px;
+  top: 70px;
+}
