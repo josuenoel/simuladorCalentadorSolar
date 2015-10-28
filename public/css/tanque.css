@@ -1,0 +1,162 @@
+#tanque-contenedor {
+  position: absolute;
+  bottom: 15%;
+  left: calc(50% - 150px)
+}
+
+.azul {
+  margin-top: 15px;
+}
+
+.azul .progress {
+  position: relative;
+  border-radius: 50%;
+}
+
+.azul .progress {
+  width: 300px;
+  height: 300px;
+}
+
+.azul .progress {
+  box-shadow: 0 0 20px #808080;
+}
+
+.azul .progress {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.azul .progress .inner {
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.azul .progress .inner {
+  width: 290px;
+  height: 290px;
+}
+
+.azul .progress .inner {
+  border: 7px solid #e0e0e0;
+}
+
+.azul .progress .inner {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.azul .progress .inner .water {
+  position: absolute;
+  z-index: 1;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  border-radius: 40%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: spin;
+  animation-name: spin;
+}
+
+.azul .progress .inner .water {
+  top: 25%;
+}
+
+.azul .progress .inner .water {
+  background: #40a4df;
+}
+
+.azul .progress .inner .water {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.azul .progress .inner .water {
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+}
+
+.azul .progress .inner .water {
+  box-shadow: 0 0 20px #40a4df;
+}
+
+.azul .progress .inner .glare {
+  position: absolute;
+  top: -120%;
+  left: -120%;
+  z-index: 5;
+  width: 200%;
+  height: 200%;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-radius: 50%;
+}
+
+.azul .progress .inner .glare {
+  background-color: rgba(255,255,255,0.15);
+}
+
+.azul .progress .inner .glare {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.azul .progress .inner .percent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+
+.azul .progress .inner .percent {
+  line-height: 240px;
+  font-size: 92.3076923076923px;
+}
+
+.azul .progress .inner .percent {
+  color: #03c603;
+}
+
+.azul .progress .inner .percent {
+  text-shadow: 0 0 10px #029502;
+}
+
+.azul .progress .inner .percent {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

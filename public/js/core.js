@@ -62,14 +62,13 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 
 
 
+
 	// Tem ambiente real
 
 	var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 	    if (xhttp.readyState == 4 && xhttp.status == 200) {
 	    	//console.log($.parseXML( xhttp.responseText ));
-
-
 			var xml = $.parseXML( xhttp.responseText ),
 			$xml = $( xml ),
 			$test = $xml.find('string');
@@ -77,19 +76,11 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 			$test.each(function(){
 				console.log($(this).find('CurrentWeather').text());
 			});
-
 			console.log($test.text());
-
-
-
 	    }
 	  }
 	  xhttp.open("GET", "http://www.webservicex.net/globalweather.asmx/GetWeather?CityName=Tegucigalpa&CountryName=Honduras&units=metric", true);
 	  xhttp.send();
-
-
-
-
 
 	var taWidth = 80,
 	    taHeight = 180,
@@ -294,6 +285,12 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 
 
 
+
+
+
+	  // TANQUE
+
+	  
 
 
 
