@@ -30,5 +30,5 @@
 
 
     // Abriendo puerto (inicializar app con node server.js) ======================================
-    app.listen(80);
-    console.log("Escuchando en el puerto 80");
+    app.listen(8090);
+    console.log("Escuchando en el puerto 8090");
