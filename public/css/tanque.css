@@ -1,12 +1,12 @@
 #tanque-contenedor {
-  position: absolute;
-  bottom: 15%;
-  left: calc(50% - 150px)
+    position: absolute;
+    bottom: 209px;
+    left: calc(50% - 196px);
 }
 
-.azul {
+/*.azul {
   margin-top: 15px;
-}
+}*/
 
 .azul .progress {
   position: relative;
@@ -14,13 +14,13 @@
 }
 
 .azul .progress {
-  width: 300px;
-  height: 300px;
+  width: 38px;
+  height: 143px;
 }
 
-.azul .progress {
+/*.azul .progress {
   box-shadow: 0 0 20px #808080;
-}
+}*/
 
 .azul .progress {
   -webkit-transition: all 1s ease;
@@ -35,12 +35,12 @@
 }
 
 .azul .progress .inner {
-  width: 290px;
-  height: 290px;
+  width: 35px;
+  height: 142px;
 }
 
 .azul .progress .inner {
-  border: 7px solid #e0e0e0;
+  border: 1px solid #BEC0C1;
 }
 
 .azul .progress .inner {
@@ -51,8 +51,10 @@
 .azul .progress .inner .water {
   position: absolute;
   z-index: 1;
-  width: 200%;
-  height: 200%;
+/*  width: 200%;
+  height: 200%;*/
+  width: 110px;
+  height: 110px;
   left: -50%;
   border-radius: 40%;
   -webkit-animation-iteration-count: infinite;
