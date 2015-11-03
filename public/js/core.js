@@ -21,6 +21,13 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 		$scope.hora = parseInt($scope.horaTexto);
 		$scope.minutos = parseInt($scope.minutosTexto);
 		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	AGREGAR VALIDACION DE LA HORA
+        //if ($scope.hora.length!=4) {alert("introducir HHMM");return}
+        a=$scope.hora
+        c=$scope.minutos
+        if (a>23) {alert("hora mal ingresada :(");return}
+        if (a<00) {alert("hora mal ingresada :(");return}
+        if (c>59) {alert("minutos mal ingresados :(");return}
+        if (c<00) {alert("minutos mal ingresados :(");return}
 		// Colocar Cero dos digitos en la hora
 		if ($scope.hora < 10){
 			$scope.horaTexto = '0' + $scope.hora;
