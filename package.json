@@ -1,14 +1,15 @@
 {
-  "name"         : "Simulador-calentador",
-  "version"      : "1.0.0",
-  "description"  : "Simulador Calentador Solar para Agua.",
-  "main"         : "server.js",
-  "author"       : "Grupo No. X - Ingeniería de Software",
-  "dependencies" : {
-    "express"    : "~4.7.2",
-    "mongoose"   : "~3.6.2",
-    "morgan"     : "~1.2.2",
+  "name": "Simulador-calentador",
+  "version": "1.0.0",
+  "description": "Simulador Calentador Solar para Agua.",
+  "main": "server.js",
+  "author": "Grupo No. X - Ingeniería de Software",
+  "dependencies": {
     "body-parser": "~1.5.2",
-    "method-override": "~2.1.2"
-    }
+    "express": "~4.7.2",
+    "grunt": "^0.4.5",
+    "method-override": "~2.1.2",
+    "mongoose": "~3.6.2",
+    "morgan": "~1.2.2"
+  }
 }
