@@ -7,6 +7,9 @@
 		<title>Silumador Calentador Solar para Agua</title>
 		<link rel="stylesheet" type="text/css" href="css/fondo.css">
 		<link rel="stylesheet" type="text/css" href="css/tanque.css">
+
+		<link rel="stylesheet" type="text/css" href="css/boton.css">
+		<link rel="stylesheet" type="text/css" href="css/interruptor.css">
 		<script src="js/jquery-1.11.3.min.js"></script>
 		<script src="js/angular.min.js"></script>
 		<script src="js/d3.min.js"></script>
@@ -49,12 +52,25 @@
 
 		<!-- Casa -->
 		<img id="casa" src="img/casa.png">
+		<a id="boton-casa" class="button lightText large square grey" href="javascript:void(0);">Pedir Agua</a>
 
 		<!-- Bomba -->
 		<img id="bomba" src="img/bomba.png">
 
 		<!-- Panel -->
-		<img id="panel" src="img/panel.png">
+		<img id="panel" src="img/panel2.png">
+
+		<!-- Tubos -->
+		<div id="t-cisterna-calentador"></div>
+		<div id="t-cisterna-casa"></div>
+
+		<div id="contenedor-interruptor-cisterna">
+			<p id="texto-modo-cisterna">Automático</p>
+			<input type="checkbox" id="modo-cisterna" />
+			<label class="slider-v2" for="modo-cisterna"></label>
+			<a id="boton-cisterna" class="button lightText large square grey" href="javascript:void(0);">Llenar</a>
+		</div>
+		
 
 
 

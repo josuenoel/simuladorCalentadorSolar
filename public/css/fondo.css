@@ -103,6 +103,7 @@ body {
 #casa {
   position: absolute;
   bottom: 20%;
+  z-index: 1;
 }
 
 #bomba {
@@ -113,7 +114,66 @@ body {
 }
 
 #panel {
+    height: 350px;
     position: absolute;
     bottom: 10px;
-    left: calc(50% - 120px);
+    left: calc(50% - 200px);
+    transform: rotate(2deg);
+    z-index: 1;
+}
+
+#t-cisterna-calentador {
+  position: absolute;
+  right: 178px;
+  bottom: calc(20% + 50px);
+  width: 40%;
+  height: 10px;
+  border: 2px solid gray;
+  background-color: white;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#t-cisterna-casa {
+  position: absolute;
+  left: 178px;
+  bottom: calc(20% + 20px);
+  width: 40%;
+  height: 10px;
+  border: 2px solid gray;
+  background-color: white;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+  transform: rotate(6deg);
+}
+
+#modo-cisterna {
+  display: none;
+}
+
+#contenedor-interruptor-cisterna {
+  position: absolute;
+  bottom: calc(20% - 150px);
+  right: 50px;
+  background-color: white;
+  padding: 5px;
+  border: 3px gray solid;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#texto-modo-cisterna {
+  margin: 10px;
+}
+
+#boton-cisterna {
+  margin-top: 15px;
+}
+
+#boton-casa {
+  position: absolute;
+  bottom: calc(20% - 40px);
+  left: 70px;
 }
