@@ -18,6 +18,8 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	$scope.nivelAgua = 50;
 	$scope.voltaje = 60;
 	$scope.sisternaAutomatica = false;
+	$scope.bateriaNivel = 0;
+	$scope.bateriaCargando = false;
 	
 
 
@@ -62,6 +64,7 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 			hillFg.className = 'hill-foreground night';
 			// Voltaje
 			$scope.voltaje = 0;
+			$scope.bateriaCargando = false;
 		} else {
 			// Es de Dia.
 			sky.className = 'sky';
@@ -69,6 +72,7 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 			hillFg.className = 'hill-foreground';
 			// Voltaje
 			$scope.voltaje = (60 * Math.abs(1 - Math.abs(12 - ($scope.hora + $scope.minutos/60))/12)).toFixed(2);
+			$scope.bateriaCargando = true;
 		}
 
 
@@ -342,6 +346,7 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	function actualizarAmbiente(){
 		if ($scope.sisternaAutomatica && $scope.nivelAgua < 100){
 			$scope.nivelAgua++;
+			$scope.temperaturaAguaActual-=0.5;
 			actualizarNivelTanque();
 		}
 		if ($scope.voltaje > 0){
@@ -361,10 +366,63 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 		}
 		$timeout(function(){
 			actualizarAmbiente();
+			actualizarNivelBateria();
 		}, 500);
 	}
 
+	function actualizarNivelBateria(){
+		if ($scope.bateriaCargando) {
+			$scope.bateriaNivel+=1;
+		}else{
+			$scope.bateriaNivel-= 1;
+		};
+		actualizarBateria();
+	}
 
+	/* Acutalizando nivel de batería */
+	function actualizarBateria(){
+		if (scope.bateriaNivel > 90) {
+			document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7','celda8').style.backgroundColor = #00FF00;
+		}else{
+			if (scope.bateriaNivel > 80) {
+				document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7').style.backgroundColor = #00FF00;
+			} else{
+				if (scope.bateriaNivel > 70) {
+					document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6').style.backgroundColor = #00FF00;
+				} else{
+					if (scope.bateriaNivel > 60) {
+						document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5').style.backgroundColor = #00FF00;
+					} else{
+						if (scope.bateriaNivel > 50) {
+							document.getElementById('celda0','celda1','celda2','celda3','celda4').style.backgroundColor = #00FF00;
+						} else{
+							if (scope.bateriaNivel > 40) {
+								document.getElementById('celda0','celda1','celda2','celda3').style.backgroundColor = #00FF00;
+							} else{
+								if (scope.bateriaNivel > 30) {
+									document.getElementById('celda0','celda1','celda2').style.backgroundColor = #00FF00;
+								} else{
+									if (scope.bateriaNivel > 20) {
+										document.getElementById('celda0','celda1').style.backgroundColor = #00FF00;
+									} else{
+										if (scope.bateriaNivel > 10) {
+											document.getElementById('celda0').style.backgroundColor = #00FF00;
+										} else{
+											if (scope.bateriaNivel > 0) {
+												document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7','celda8', 'celda9').style.backgroundColor = #FFFFFF;
+											} else{
+												document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7','celda8', 'celda9').style.backgroundColor = #00FF00;
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	}
 
 	actualizarNivelTanque();
 	actualizarAmbiente();

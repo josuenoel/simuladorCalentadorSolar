@@ -191,7 +191,7 @@ body {
 	background-color: white;
 	padding: 10px;
 	margin: 10px;
-	height: 260px;
+	height: 290px;
 	width: 230px;
 	border-radius: 10px;
     border: 1px black solid;
@@ -243,4 +243,34 @@ body {
 #pc-nivel-agua p, #pc-voltimetro p, #pc-temperatura-actual p {
 	margin-top: 10px;
 	margin-bottom: 0;
+}
+
+#pc-bateria-nivel{
+	background-color: #F2F5A9;
+	width: 90px;
+	height: 15px;
+	float: left;
+	display: block;
+	vertical-align: center;
+}
+
+#celda0, #celda1, #celda2, #celda3, #celda4, #celda5, #celda6, #celda7, #celda8, #celda9{
+	background-color: #F2F5A9;
+	width: 7px;
+	height: 15px;
+	float: left;margin-left: 2px;
+	vertical-align: center;
+	/*background-color: #31B404; color verde*/
+}
+
+#pc-bateria-etiqueta{
+	width: 120px;
+	height: 20px;
+	float: left;
+}
+
+#pc-bateria{
+	width: 210px;
+	height: 20px;
+	float: left;
 }
