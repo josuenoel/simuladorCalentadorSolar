@@ -28,14 +28,35 @@
 		</div>
 
 
+		<!-- PANEL DE CONTROL TANQUE -->
+		<div id="panelControlTanque">
+			<p id="panel-title">Panel de Control</p>
+			<div id="pc-temperatura">
+				<p id="pc-temperatura-etiqueta">Temperatura</p>
+				<input id="slider1" type="range" min="0" max="85" step="1" ng-model="temperaturaAgua" />
+				<p id="pc-temperatura-valor">{{temperaturaAgua}} °C</p>
+			</div>
+			<div id="pc-nivel-agua">
+				<p id="pc-nivel-agua-etiqueta">Nivel de Agua</p>
+				<p id="pc-nivel-agua-valor">{{nivelAgua}}%</p>
+			</div>
+			<div id="pc-voltimetro">
+				<p id="pc-voltimetro-etiqueta">Voltaje</p>
+				<p id="pc-voltimetro-valor">{{voltaje}} V</p>
+			</div>
+		</div>
+
+
 		<!-- RELOJ -->
 		<div id="reloj">
 			<input id="horas-reloj" type="text" min="0" max="24" ng-model="horaTexto" ng-blur="actualizarHora()">:<input id="minutos-reloj" type="text" min="0" max="59" ng-model="minutosTexto" ng-blur="actualizarHora()">
 		</div>
 		
+		
 		<!-- Termometro Ambiente -->
-		<div id="thermo"></div>
-
+		<div id="thermo">
+			<p id="temperaturaAmbiente">{{temperaturaAmbiente}} °C</p>
+		</div>
 
 
 		<!-- Tanque -->

@@ -12,6 +12,10 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 	var tiempo = new Date();
 	$scope.horaTexto = "" + tiempo.getHours();
 	$scope.minutosTexto = "" + tiempo.getMinutes();
+	$scope.temperaturaAmbiente = 28;
+	$scope.temperaturaAgua = 28;
+	$scope.nivelAgua = 88;
+	$scope.voltaje = 60;
 	
 
 
@@ -84,9 +88,9 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 
 	var taWidth = 80,
 	    taHeight = 180,
-	    taMaxTemp = 30.0,
+	    taMaxTemp = 35.0,
 	    taMinTemp = 15.0,
-	    taCurrentTemp = 19.2;
+	    taCurrentTemp = 28.2;
 
 	var taBottomY = taHeight - 5,
 	    taTopY = 5,

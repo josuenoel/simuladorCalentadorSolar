@@ -1,179 +1,219 @@
 .sky,
 .hill-background,
 .hill-foreground {
-  transition: background-color 0.5s ease-out;
+	transition: background-color 0.5s ease-out;
 }
 
 body {
-  margin: 0;
-  overflow: hidden;
-  font-family: Arial;
+	margin: 0;
+	overflow: hidden;
+	font-family: Arial;
 }
 
 .sun {
-  width: 200px;
-  height: 200px;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  box-shadow: 0 0 200px rgba(255,255,255, 0.8);
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+	box-shadow: 0 0 200px rgba(255,255,255, 0.8);
 }
 
 .hills-wrapper {
-  position: relative;
+	position: relative;
 }
 
 .hill-background,
 .hill-foreground {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 
 .hill-background {
-  height: 40%;
-  border-radius: 175% 0 0 0;
+	height: 40%;
+	border-radius: 175% 0 0 0;
 }
 
 .hill-foreground {
-  height: 28%;
-  border-radius: 0 280% 0 0;
+	height: 28%;
+	border-radius: 0 280% 0 0;
 }
 
 .sun {
-  background-color: #ffdc00;
+	background-color: #ffdc00;
 }
 
 .sky {
-  background-color: #7EC0EE;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+	background-color: #7EC0EE;
+	width: 100%;
+	height: 100%;
+	position: absolute;
 }
 
 .hill-background {
-  background-color: #2BC03C;
+	background-color: #2BC03C;
 }
 
 .hill-foreground {
-  background-color: #2ecc40;
+	background-color: #2ecc40;
 }
 
 .sky.night {
-  background-color: #001f3f;
+	background-color: #001f3f;
 }
 
 .hill-background.night {
-  background-color: #0A300F;
+	background-color: #0A300F;
 }
 
 .hill-foreground.night {
-  background-color: #0D3D13;
+	background-color: #0D3D13;
 }
 
 #reloj {
-  position: absolute;
-  width: 120px;
-  height: 40px;
-  background: white;
-  right: 0;
-  border: 3px solid;
-  margin-top: 5px;
-  margin-right: 5px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 35px;
+	position: absolute;
+	width: 120px;
+	height: 40px;
+	background: white;
+	right: 0;
+	border: 3px solid;
+	margin-top: 5px;
+	margin-right: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 35px;
+	border-radius: 10px;
 }
 
 #reloj input {
-  font-size: 30px;
-  width: 35px;
-  border: none;
+	font-size: 30px;
+	width: 35px;
+	border: none;
 }
 
 #thermo {
-  z-index: 100;
-  position: fixed;
-  right: 10px;
-  top: 70px;
+	z-index: 100;
+	position: fixed;
+	right: 10px;
+	top: 70px;
 }
 
 #casa {
-  position: absolute;
-  bottom: 20%;
-  z-index: 1;
+	position: absolute;
+	bottom: 20%;
+	z-index: 1;
 }
 
 #bomba {
-    position: absolute;
-    bottom: 20%;
-    width: 150px;
-    right: 30px;
+	position: absolute;
+	bottom: 20%;
+	width: 150px;
+	right: 30px;
 }
 
 #panel {
-    height: 350px;
-    position: absolute;
-    bottom: 10px;
-    left: calc(50% - 200px);
-    transform: rotate(2deg);
-    z-index: 1;
+	height: 350px;
+	position: absolute;
+	bottom: 10px;
+	left: calc(50% - 200px);
+	transform: rotate(2deg);
+	z-index: 1;
 }
 
 #t-cisterna-calentador {
-  position: absolute;
-  right: 178px;
-  bottom: calc(20% + 50px);
-  width: 40%;
-  height: 10px;
-  border: 2px solid gray;
-  background-color: white;
-  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	position: absolute;
+	right: 178px;
+	bottom: calc(20% + 50px);
+	width: 40%;
+	height: 10px;
+	border: 2px solid gray;
+	background-color: white;
+	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 #t-cisterna-casa {
-  position: absolute;
-  left: 178px;
-  bottom: calc(20% + 20px);
-  width: 40%;
-  height: 10px;
-  border: 2px solid gray;
-  background-color: white;
-  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
-  transform: rotate(6deg);
+	position: absolute;
+	left: 178px;
+	bottom: calc(20% + 20px);
+	width: 40%;
+	height: 10px;
+	border: 2px solid gray;
+	background-color: white;
+	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	transform: rotate(6deg);
 }
 
 #modo-cisterna {
-  display: none;
+	display: none;
 }
 
 #contenedor-interruptor-cisterna {
-  position: absolute;
-  bottom: calc(20% - 150px);
-  right: 50px;
-  background-color: white;
-  padding: 5px;
-  border: 3px gray solid;
-  border-radius: 10px;
-  text-align: center;
+	position: absolute;
+	bottom: calc(20% - 150px);
+	right: 50px;
+	background-color: white;
+	padding: 5px;
+	border: 3px gray solid;
+	border-radius: 10px;
+	text-align: center;
 }
 
 #texto-modo-cisterna {
-  margin: 10px;
+	margin: 10px;
 }
 
 #boton-cisterna {
-  margin-top: 15px;
+	/*margin-top: 15px;*/
 }
 
 #boton-casa {
-  position: absolute;
-  bottom: calc(20% - 40px);
-  left: 70px;
+	position: absolute;
+	bottom: calc(20% - 40px);
+	left: 70px;
+}
+
+#thermo {
+	background: white;
+	border-radius: 10px;
+	border: 2px gray solid;
+	text-align: center;
+}
+
+#panelControlTanque {
+	position: absolute;
+	background-color: white;
+	padding: 10px;
+	margin: 10px;
+	height: 30%;
+	width: 210px;
+	border-radius: 10px;
+    border: 1px black solid;
+}
+
+#panel-title {
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+
+#pc-temperatura {
+	text-align: center;
+}
+
+#pc-temperatura p {
+	margin: 5px;
+}
+
+#pc-temperatura-valor {
+	font-size: 20px;
+	color: red;
+	font-weight: bold;
 }
