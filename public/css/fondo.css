@@ -191,8 +191,8 @@ body {
 	background-color: white;
 	padding: 10px;
 	margin: 10px;
-	height: 230px;
-	width: 210px;
+	height: 260px;
+	width: 230px;
 	border-radius: 10px;
     border: 1px black solid;
 }
@@ -218,7 +218,7 @@ body {
 	font-weight: bold;
 }
 
-#pc-nivel-agua-etiqueta, #pc-nivel-agua-valor, #pc-voltimetro-etiqueta, #pc-voltimetro-valor {
+#pc-nivel-agua-etiqueta, #pc-nivel-agua-valor, #pc-voltimetro-etiqueta, #pc-voltimetro-valor, #pc-temperatura-actual-etiqueta, #pc-temperatura-actual-valor {
 	display: inline-block;
 }
 
@@ -234,7 +234,13 @@ body {
 	font-weight: bold;
 }
 
-#pc-nivel-agua p, #pc-voltimetro p {
+#pc-temperatura-actual-valor {
+	font-size: 20px;
+	color: #cc8400;
+	font-weight: bold;
+}
+
+#pc-nivel-agua p, #pc-voltimetro p, #pc-temperatura-actual p {
 	margin-top: 10px;
 	margin-bottom: 0;
 }

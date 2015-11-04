@@ -13,7 +13,8 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	$scope.horaTexto = "" + tiempo.getHours();
 	$scope.minutosTexto = "" + tiempo.getMinutes();
 	$scope.temperaturaAmbiente = 28;
-	$scope.temperaturaAgua = 28;
+	$scope.temperaturaAgua = 40;
+	$scope.temperaturaAguaActual = 28;
 	$scope.nivelAgua = 50;
 	$scope.voltaje = 60;
 	$scope.sisternaAutomatica = false;
@@ -25,14 +26,12 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	$scope.actualizarHora = function(){
 		$scope.hora = parseInt($scope.horaTexto);
 		$scope.minutos = parseInt($scope.minutosTexto);
-		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	AGREGAR VALIDACION DE LA HORA
-        //if ($scope.hora.length!=4) {alert("introducir HHMM");return}
-        a=$scope.hora
-        c=$scope.minutos
-        if (a>23) {alert("hora mal ingresada :(");return}
-        if (a<00) {alert("hora mal ingresada :(");return}
-        if (c>59) {alert("minutos mal ingresados :(");return}
-        if (c<00) {alert("minutos mal ingresados :(");return}
+        a = $scope.hora;
+        c = $scope.minutos;
+        if (a > 23) {alert("Hora Incorrecta");return}
+        if (a < 00) {alert("Hora Incorrecta");return}
+        if (c > 59) {alert("Minutos Incorrectos");return}
+        if (c < 00) {alert("Minutos Incorrectos");return}
 		// Colocar Cero dos digitos en la hora
 		if ($scope.hora < 10){
 			$scope.horaTexto = '0' + $scope.hora;
@@ -61,12 +60,18 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 			sky.className = 'sky night';
 			hillBg.className = 'hill-background night';
 			hillFg.className = 'hill-foreground night';
+			// Voltaje
+			$scope.voltaje = 0;
 		} else {
 			// Es de Dia.
 			sky.className = 'sky';
 			hillBg.className = 'hill-background';
 			hillFg.className = 'hill-foreground';
+			// Voltaje
+			$scope.voltaje = (60 * Math.abs(1 - Math.abs(12 - ($scope.hora + $scope.minutos/60))/12)).toFixed(2);
 		}
+
+
 	}
 	$scope.actualizarHora();
 	$scope.posicionarSol();
@@ -315,6 +320,11 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 			} else {
 				$scope.nivelAgua += 5;
 			}
+			$scope.temperaturaAguaActual -= 0.5;
+			$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+			if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
+				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
+			}
 		}
 		actualizarNivelTanque();
 	}
@@ -329,20 +339,35 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	}
 
 
-	function sisternaAutomatica(){
+	function actualizarAmbiente(){
 		if ($scope.sisternaAutomatica && $scope.nivelAgua < 100){
 			$scope.nivelAgua++;
 			actualizarNivelTanque();
 		}
+		if ($scope.voltaje > 0){
+			if ($scope.temperaturaAguaActual < $scope.temperaturaAgua){
+				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
+				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+				if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
+					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAgua);
+				}
+			}
+		} else {
+			$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) - 0.01;
+			$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+			if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
+				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
+			}
+		}
 		$timeout(function(){
-			sisternaAutomatica();
+			actualizarAmbiente();
 		}, 500);
 	}
 
 
 
 	actualizarNivelTanque();
-	sisternaAutomatica();
+	actualizarAmbiente();
 
 
 
