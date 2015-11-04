@@ -191,7 +191,7 @@ body {
 	background-color: white;
 	padding: 10px;
 	margin: 10px;
-	height: 30%;
+	height: 230px;
 	width: 210px;
 	border-radius: 10px;
     border: 1px black solid;
@@ -216,4 +216,25 @@ body {
 	font-size: 20px;
 	color: red;
 	font-weight: bold;
+}
+
+#pc-nivel-agua-etiqueta, #pc-nivel-agua-valor, #pc-voltimetro-etiqueta, #pc-voltimetro-valor {
+	display: inline-block;
+}
+
+#pc-nivel-agua-valor {
+	font-size: 20px;
+	color: #069EF8;
+	font-weight: bold;
+}
+
+#pc-voltimetro-valor {
+	font-size: 20px;
+	color: #0C9B33;
+	font-weight: bold;
+}
+
+#pc-nivel-agua p, #pc-voltimetro p {
+	margin-top: 10px;
+	margin-bottom: 0;
 }
