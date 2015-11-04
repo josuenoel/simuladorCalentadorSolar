@@ -344,7 +344,7 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 			$scope.nivelAgua++;
 			actualizarNivelTanque();
 		}
-		if ($scope.voltaje > 0){
+		if ($scope.voltaje > 0 && !$scope.sisternaAutomatica){
 			if ($scope.temperaturaAguaActual < $scope.temperaturaAgua){
 				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
 				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
@@ -353,11 +353,20 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 				}
 			}
 		} else {
-			$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) - 0.01;
-			$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
-			if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
-				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
+			if ($scope.nivelAgua < 100){
+				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) - 0.01;
+				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+				if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
+					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
+				}
+			} else {
+				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
+				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+				if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
+					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAgua);
+				}
 			}
+			
 		}
 		$timeout(function(){
 			actualizarAmbiente();
