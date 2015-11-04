@@ -1,6 +1,6 @@
 var simulador = angular.module('simulador', []);
 
-simulador.controller('mainController', ['$scope', '$http', function($scope, $http) {
+simulador.controller('mainController', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 
 
 
@@ -14,8 +14,9 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 	$scope.minutosTexto = "" + tiempo.getMinutes();
 	$scope.temperaturaAmbiente = 28;
 	$scope.temperaturaAgua = 28;
-	$scope.nivelAgua = 88;
+	$scope.nivelAgua = 50;
 	$scope.voltaje = 60;
+	$scope.sisternaAutomatica = false;
 	
 
 
@@ -295,13 +296,53 @@ simulador.controller('mainController', ['$scope', '$http', function($scope, $htt
 	  .style("stroke-width", "1px");
 
 
+	$scope.pedirAgua = function(){
+		if ($scope.nivelAgua > 0){
+			if ($scope.nivelAgua < 5){
+				$scope.nivelAgua = 0;
+			} else {
+				$scope.nivelAgua -= 5;
+			}
+		}
+		actualizarNivelTanque();
+	}
 
+
+	$scope.llenarAgua = function(){
+		if ($scope.nivelAgua < 100 && $scope.sisternaAutomatica == false){
+			if ($scope.nivelAgua > 95){
+				$scope.nivelAgua = 100;
+			} else {
+				$scope.nivelAgua += 5;
+			}
+		}
+		actualizarNivelTanque();
+	}
 
 
 
 	  // TANQUE
 
-	  
+	function actualizarNivelTanque(){
+		var topAgua = Math.abs(145 - (1.45 * $scope.nivelAgua));;
+		$('.water').css('top', topAgua + 'px');
+	}
+
+
+	function sisternaAutomatica(){
+		if ($scope.sisternaAutomatica && $scope.nivelAgua < 100){
+			$scope.nivelAgua++;
+			actualizarNivelTanque();
+		}
+		$timeout(function(){
+			sisternaAutomatica();
+		}, 500);
+	}
+
+
+
+	actualizarNivelTanque();
+	sisternaAutomatica();
 
 
 

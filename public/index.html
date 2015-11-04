@@ -16,8 +16,8 @@
 		<script src="js/core.js"></script>
 	</head>
 
+
 	<body ng-controller="mainController">
-		
 
 		<!-- FONDO -->
 		<div class="sky"></div>
@@ -42,7 +42,7 @@
 			</div>
 			<div id="pc-voltimetro">
 				<p id="pc-voltimetro-etiqueta">Voltaje: </p>
-				<p id="pc-voltimetro-valor">{{voltaje}} V</p>
+				<p id="pc-voltimetro-valor">{{voltaje}} v</p>
 			</div>
 		</div>
 
@@ -73,7 +73,7 @@
 
 		<!-- Casa -->
 		<img id="casa" src="img/casa.png">
-		<a id="boton-casa" class="button lightText large square grey" href="javascript:void(0);">Pedir Agua</a>
+		<a id="boton-casa" class="button lightText large square grey" href="javascript:void(0);" ng-click="pedirAgua()">Pedir Agua</a>
 
 		<!-- Bomba -->
 		<img id="bomba" src="img/bomba.png">
@@ -87,9 +87,9 @@
 
 		<div id="contenedor-interruptor-cisterna">
 			<p id="texto-modo-cisterna">Automático</p>
-			<input type="checkbox" id="modo-cisterna" />
+			<input type="checkbox" id="modo-cisterna" ng-model="sisternaAutomatica"/>
 			<label class="slider-v2" for="modo-cisterna"></label>
-			<a id="boton-cisterna" class="button lightText large square grey" href="javascript:void(0);">Llenar</a>
+			<a id="boton-cisterna" class="button lightText large square grey" href="javascript:void(0);" ng-click="llenarAgua()">Llenar</a>
 		</div>
 		
 
