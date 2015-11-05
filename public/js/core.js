@@ -77,28 +77,6 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	$scope.actualizarHora();
 	$scope.posicionarSol();
 
-
-
-
-
-	// Tem ambiente real
-	// var xhttp = new XMLHttpRequest();
-	// xhttp.onreadystatechange = function() {
-	// 	if (xhttp.readyState == 4 && xhttp.status == 200) {
-	//     	//console.log($.parseXML( xhttp.responseText ));
-	//     	var xml = $.parseXML( xhttp.responseText ),
-	//     	$xml = $( xml ),
-	//     	$test = $xml.find('string');
-
-	//     	$test.each(function(){
-	//     		console.log($(this).find('CurrentWeather').text());
-	//     	});
-	//     	console.log($test.text());
-	//     }
-	// }
-	// xhttp.open("GET", "http://www.webservicex.net/globalweather.asmx/GetWeather?CityName=Tegucigalpa&CountryName=Honduras&units=metric", true);
-	// xhttp.send();
-
 	var taWidth = 80,
 	taHeight = 180,
 	taMaxTemp = 35.0,
@@ -354,10 +332,18 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	  		}
 	  	} else {
 	  		if ($scope.nivelAgua < 100){
-	  			$scope.temperaturaAguaActual -= 0.01;
-	  			$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
-	  			if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
-	  				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
+	  			if ($scope.bateriaNivel == 0){
+	  				$scope.temperaturaAguaActual -= 0.01;
+	  				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+	  				if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
+	  					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
+	  				}
+	  			} else {
+	  				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
+	  				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+	  				if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
+	  					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAgua);
+	  				}
 	  			}
 	  		} else {
 	  			$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;

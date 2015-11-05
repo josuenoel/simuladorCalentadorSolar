@@ -1,0 +1,4 @@
+1. Bajar e instalar node.js
+2. Ejecutar el archivo: instalarApp
+3. Ejecutar el archivo: inciarApp
+4. Abrir en un explorador de internet: http://localhost:8090/
