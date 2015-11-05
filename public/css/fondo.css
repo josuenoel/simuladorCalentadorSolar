@@ -274,3 +274,8 @@ body {
 	height: 20px;
 	float: left;
 }
+
+#porcentaje-bateria {
+	height: 100%;
+	background-color: #13C513;
+}

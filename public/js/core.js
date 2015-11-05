@@ -19,7 +19,6 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	$scope.voltaje = 60;
 	$scope.sisternaAutomatica = false;
 	$scope.bateriaNivel = 0;
-	$scope.bateriaCargando = false;
 	
 
 
@@ -28,12 +27,12 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 	$scope.actualizarHora = function(){
 		$scope.hora = parseInt($scope.horaTexto);
 		$scope.minutos = parseInt($scope.minutosTexto);
-        a = $scope.hora;
-        c = $scope.minutos;
-        if (a > 23) {alert("Hora Incorrecta");return}
-        if (a < 00) {alert("Hora Incorrecta");return}
-        if (c > 59) {alert("Minutos Incorrectos");return}
-        if (c < 00) {alert("Minutos Incorrectos");return}
+		a = $scope.hora;
+		c = $scope.minutos;
+		if (a > 23) {alert("Hora Incorrecta");return}
+		if (a < 00) {alert("Hora Incorrecta");return}
+		if (c > 59) {alert("Minutos Incorrectos");return}
+		if (c < 00) {alert("Minutos Incorrectos");return}
 		// Colocar Cero dos digitos en la hora
 		if ($scope.hora < 10){
 			$scope.horaTexto = '0' + $scope.hora;
@@ -64,7 +63,6 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 			hillFg.className = 'hill-foreground night';
 			// Voltaje
 			$scope.voltaje = 0;
-			$scope.bateriaCargando = false;
 		} else {
 			// Es de Dia.
 			sky.className = 'sky';
@@ -72,7 +70,6 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 			hillFg.className = 'hill-foreground';
 			// Voltaje
 			$scope.voltaje = (60 * Math.abs(1 - Math.abs(12 - ($scope.hora + $scope.minutos/60))/12)).toFixed(2);
-			$scope.bateriaCargando = true;
 		}
 
 
@@ -85,121 +82,120 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 
 
 	// Tem ambiente real
+	// var xhttp = new XMLHttpRequest();
+	// xhttp.onreadystatechange = function() {
+	// 	if (xhttp.readyState == 4 && xhttp.status == 200) {
+	//     	//console.log($.parseXML( xhttp.responseText ));
+	//     	var xml = $.parseXML( xhttp.responseText ),
+	//     	$xml = $( xml ),
+	//     	$test = $xml.find('string');
 
-	var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
-	    if (xhttp.readyState == 4 && xhttp.status == 200) {
-	    	//console.log($.parseXML( xhttp.responseText ));
-			var xml = $.parseXML( xhttp.responseText ),
-			$xml = $( xml ),
-			$test = $xml.find('string');
-
-			$test.each(function(){
-				console.log($(this).find('CurrentWeather').text());
-			});
-			console.log($test.text());
-	    }
-	  }
-	  xhttp.open("GET", "http://www.webservicex.net/globalweather.asmx/GetWeather?CityName=Tegucigalpa&CountryName=Honduras&units=metric", true);
-	  xhttp.send();
+	//     	$test.each(function(){
+	//     		console.log($(this).find('CurrentWeather').text());
+	//     	});
+	//     	console.log($test.text());
+	//     }
+	// }
+	// xhttp.open("GET", "http://www.webservicex.net/globalweather.asmx/GetWeather?CityName=Tegucigalpa&CountryName=Honduras&units=metric", true);
+	// xhttp.send();
 
 	var taWidth = 80,
-	    taHeight = 180,
-	    taMaxTemp = 35.0,
-	    taMinTemp = 15.0,
-	    taCurrentTemp = 28.2;
+	taHeight = 180,
+	taMaxTemp = 35.0,
+	taMinTemp = 15.0,
+	taCurrentTemp = 28.2;
 
 	var taBottomY = taHeight - 5,
-	    taTopY = 5,
-	    taBulbRadius = 20,
-	    tubeWidth = 21.5,
-	    tubeBorderWidth = 1,
-	    mercuryColor = "rgb(230,0,0)",
-	    innerBulbColor = "rgb(230, 200, 200)"
-	    tubeBorderColor = "#999999";
+	taTopY = 5,
+	taBulbRadius = 20,
+	tubeWidth = 21.5,
+	tubeBorderWidth = 1,
+	mercuryColor = "rgb(230,0,0)",
+	innerBulbColor = "rgb(230, 200, 200)"
+	tubeBorderColor = "#999999";
 
 	var bulb_cy = taBottomY - taBulbRadius,
-	    bulb_cx = taWidth/2,
-	    top_cy = taTopY + tubeWidth/2;
+	bulb_cx = taWidth/2,
+	top_cy = taTopY + tubeWidth/2;
 
 
 	var svg = d3.select("#thermo")
-	  .append("svg")
-	  .attr("width", taWidth)
-	  .attr("height", taHeight);
+	.append("svg")
+	.attr("width", taWidth)
+	.attr("height", taHeight);
 
 
 	var defs = svg.append("defs");
 
 	// Define the radial gradient for the bulb fill colour
 	var bulbGradient = defs.append("radialGradient")
-	  .attr("id", "bulbGradient")
-	  .attr("cx", "50%")
-	  .attr("cy", "50%")
-	  .attr("r", "50%")
-	  .attr("fx", "50%")
-	  .attr("fy", "50%");
+	.attr("id", "bulbGradient")
+	.attr("cx", "50%")
+	.attr("cy", "50%")
+	.attr("r", "50%")
+	.attr("fx", "50%")
+	.attr("fy", "50%");
 
 	bulbGradient.append("stop")
-	  .attr("offset", "0%")
-	  .style("stop-color", innerBulbColor);
+	.attr("offset", "0%")
+	.style("stop-color", innerBulbColor);
 
 	bulbGradient.append("stop")
-	  .attr("offset", "90%")
-	  .style("stop-color", mercuryColor);
+	.attr("offset", "90%")
+	.style("stop-color", mercuryColor);
 
 
 	// Circle element for rounded tube top
 	svg.append("circle")
-	  .attr("r", tubeWidth/2)
-	  .attr("cx", taWidth/2)
-	  .attr("cy", top_cy)
-	  .style("fill", "#FFFFFF")
-	  .style("stroke", tubeBorderColor)
-	  .style("stroke-width", tubeBorderWidth + "px");
+	.attr("r", tubeWidth/2)
+	.attr("cx", taWidth/2)
+	.attr("cy", top_cy)
+	.style("fill", "#FFFFFF")
+	.style("stroke", tubeBorderColor)
+	.style("stroke-width", tubeBorderWidth + "px");
 
 
 	// Rect element for tube
 	svg.append("rect")
-	  .attr("x", taWidth/2 - tubeWidth/2)
-	  .attr("y", top_cy)
-	  .attr("height", bulb_cy - top_cy)
-	  .attr("width", tubeWidth)
-	  .style("shape-rendering", "crispEdges")
-	  .style("fill", "#FFFFFF")
-	  .style("stroke", tubeBorderColor)
-	  .style("stroke-width", tubeBorderWidth + "px");
+	.attr("x", taWidth/2 - tubeWidth/2)
+	.attr("y", top_cy)
+	.attr("height", bulb_cy - top_cy)
+	.attr("width", tubeWidth)
+	.style("shape-rendering", "crispEdges")
+	.style("fill", "#FFFFFF")
+	.style("stroke", tubeBorderColor)
+	.style("stroke-width", tubeBorderWidth + "px");
 
 
 	// White fill for rounded tube top circle element
 	// to hide the border at the top of the tube rect element
 	svg.append("circle")
-	  .attr("r", tubeWidth/2 - tubeBorderWidth/2)
-	  .attr("cx", taWidth/2)
-	  .attr("cy", top_cy)
-	  .style("fill", "#FFFFFF")
-	  .style("stroke", "none")
+	.attr("r", tubeWidth/2 - tubeBorderWidth/2)
+	.attr("cx", taWidth/2)
+	.attr("cy", top_cy)
+	.style("fill", "#FFFFFF")
+	.style("stroke", "none")
 
 
 	// Main bulb of thermometer (empty), white fill
 	svg.append("circle")
-	  .attr("r", taBulbRadius)
-	  .attr("cx", bulb_cx)
-	  .attr("cy", bulb_cy)
-	  .style("fill", "#FFFFFF")
-	  .style("stroke", tubeBorderColor)
-	  .style("stroke-width", tubeBorderWidth + "px");
+	.attr("r", taBulbRadius)
+	.attr("cx", bulb_cx)
+	.attr("cy", bulb_cy)
+	.style("fill", "#FFFFFF")
+	.style("stroke", tubeBorderColor)
+	.style("stroke-width", tubeBorderWidth + "px");
 
 
 	// Rect element for tube fill colour
 	svg.append("rect")
-	  .attr("x", taWidth/2 - (tubeWidth - tubeBorderWidth)/2)
-	  .attr("y", top_cy)
-	  .attr("height", bulb_cy - top_cy)
-	  .attr("width", tubeWidth - tubeBorderWidth)
-	  .style("shape-rendering", "crispEdges")
-	  .style("fill", "#FFFFFF")
-	  .style("stroke", "none");
+	.attr("x", taWidth/2 - (tubeWidth - tubeBorderWidth)/2)
+	.attr("y", top_cy)
+	.attr("height", bulb_cy - top_cy)
+	.attr("width", tubeWidth - tubeBorderWidth)
+	.style("shape-rendering", "crispEdges")
+	.style("fill", "#FFFFFF")
+	.style("stroke", "none");
 
 
 	// Scale step size
@@ -207,102 +203,102 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 
 	// Determine a suitable range of the temperature scale
 	var domain = [
-	  step * Math.floor(taMinTemp / step),
-	  step * Math.ceil(taMaxTemp / step)
-	  ];
+	step * Math.floor(taMinTemp / step),
+	step * Math.ceil(taMaxTemp / step)
+	];
 
 	if (taMinTemp - domain[0] < 0.66 * step)
-	  domain[0] -= step;
+		domain[0] -= step;
 
 	if (domain[1] - taMaxTemp < 0.66 * step)
-	  domain[1] += step;
+		domain[1] += step;
 
 	// D3 scale object
 	var scale = d3.scale.linear()
-	  .range([bulb_cy - taBulbRadius/2 - 8.5, top_cy])
-	  .domain(domain);
+	.range([bulb_cy - taBulbRadius/2 - 8.5, top_cy])
+	.domain(domain);
 
 	// Max and min temperature lines
 	[taMinTemp, taMaxTemp].forEach(function(t) {
 
-	  var isMax = (t == taMaxTemp),
-	      label = (isMax ? "max" : "min"),
-	      textCol = (isMax ? "rgb(230, 0, 0)" : "rgb(0, 0, 230)"),
-	      textOffset = (isMax ? -4 : 4);
+		var isMax = (t == taMaxTemp),
+		label = (isMax ? "max" : "min"),
+		textCol = (isMax ? "rgb(230, 0, 0)" : "rgb(0, 0, 230)"),
+		textOffset = (isMax ? -4 : 4);
 
-	  svg.append("line")
-	    .attr("id", label + "Line")
-	    .attr("x1", taWidth/2 - tubeWidth/2)
-	    .attr("x2", taWidth/2 + tubeWidth/2 + 22)
-	    .attr("y1", scale(t))
-	    .attr("y2", scale(t))
-	    .style("stroke", tubeBorderColor)
-	    .style("stroke-width", "1px")
-	    .style("shape-rendering", "crispEdges");
+		svg.append("line")
+		.attr("id", label + "Line")
+		.attr("x1", taWidth/2 - tubeWidth/2)
+		.attr("x2", taWidth/2 + tubeWidth/2 + 22)
+		.attr("y1", scale(t))
+		.attr("y2", scale(t))
+		.style("stroke", tubeBorderColor)
+		.style("stroke-width", "1px")
+		.style("shape-rendering", "crispEdges");
 
-	  svg.append("text")
-	    .attr("x", taWidth/2 + tubeWidth/2 + 2)
-	    .attr("y", scale(t) + textOffset)
-	    .attr("dy", isMax ? null : "0.75em")
-	    .text(label)
-	    .style("fill", textCol)
-	    .style("font-size", "11px")
+		svg.append("text")
+		.attr("x", taWidth/2 + tubeWidth/2 + 2)
+		.attr("y", scale(t) + textOffset)
+		.attr("dy", isMax ? null : "0.75em")
+		.text(label)
+		.style("fill", textCol)
+		.style("font-size", "11px")
 
 	});
 
 	var tubeFill_bottom = bulb_cy,
-	    tubeFill_top = scale(taCurrentTemp);
+	tubeFill_top = scale(taCurrentTemp);
 
 	// Rect element for the red mercury column
 	svg.append("rect")
-	  .attr("x", taWidth/2 - (tubeWidth - 10)/2)
-	  .attr("y", tubeFill_top)
-	  .attr("width", tubeWidth - 10)
-	  .attr("height", tubeFill_bottom - tubeFill_top)
-	  .style("shape-rendering", "crispEdges")
-	  .style("fill", mercuryColor)
+	.attr("x", taWidth/2 - (tubeWidth - 10)/2)
+	.attr("y", tubeFill_top)
+	.attr("width", tubeWidth - 10)
+	.attr("height", tubeFill_bottom - tubeFill_top)
+	.style("shape-rendering", "crispEdges")
+	.style("fill", mercuryColor)
 
 	// Main thermometer bulb fill
 	svg.append("circle")
-	  .attr("r", taBulbRadius - 6)
-	  .attr("cx", bulb_cx)
-	  .attr("cy", bulb_cy)
-	  .style("fill", "url(#bulbGradient)")
-	  .style("stroke", mercuryColor)
-	  .style("stroke-width", "2px");
+	.attr("r", taBulbRadius - 6)
+	.attr("cx", bulb_cx)
+	.attr("cy", bulb_cy)
+	.style("fill", "url(#bulbGradient)")
+	.style("stroke", mercuryColor)
+	.style("stroke-width", "2px");
 
 	// Values to use along the scale ticks up the thermometer
 	var tickValues = d3.range((domain[1] - domain[0])/step + 1).map(function(v) { return domain[0] + v * step; });
 
 	// D3 axis object for the temperature scale
 	var axis = d3.svg.axis()
-	  .scale(scale)
-	  .innerTickSize(7)
-	  .outerTickSize(0)
-	  .tickValues(tickValues)
-	  .orient("left");
+	.scale(scale)
+	.innerTickSize(7)
+	.outerTickSize(0)
+	.tickValues(tickValues)
+	.orient("left");
 
 	// Add the axis to the image
 	var svgAxis = svg.append("g")
-	  .attr("id", "tempScale")
-	  .attr("transform", "translate(" + (taWidth/2 - tubeWidth/2) + ",0)")
-	  .call(axis);
+	.attr("id", "tempScale")
+	.attr("transform", "translate(" + (taWidth/2 - tubeWidth/2) + ",0)")
+	.call(axis);
 
 	// Format text labels
 	svgAxis.selectAll(".tick text")
-	    .style("fill", "#777777")
-	    .style("font-size", "10px");
+	.style("fill", "#777777")
+	.style("font-size", "10px");
 
 	// Set main axis line to no stroke or fill
 	svgAxis.select("path")
-	  .style("stroke", "none")
-	  .style("fill", "none")
+	.style("stroke", "none")
+	.style("fill", "none")
 
 	// Set the style of the ticks 
 	svgAxis.selectAll(".tick line")
-	  .style("stroke", tubeBorderColor)
-	  .style("shape-rendering", "crispEdges")
-	  .style("stroke-width", "1px");
+	.style("stroke", tubeBorderColor)
+	.style("shape-rendering", "crispEdges")
+	.style("stroke-width", "1px");
 
 
 	$scope.pedirAgua = function(){
@@ -337,107 +333,67 @@ simulador.controller('mainController', ['$scope', '$http', '$timeout', function(
 
 	  // TANQUE
 
-	function actualizarNivelTanque(){
-		var topAgua = Math.abs(145 - (1.45 * $scope.nivelAgua));;
-		$('.water').css('top', topAgua + 'px');
-	}
+	  function actualizarNivelTanque(){
+	  	var topAgua = Math.abs(145 - (1.45 * $scope.nivelAgua));;
+	  	$('.water').css('top', topAgua + 'px');
+	  }
 
 
-	function actualizarAmbiente(){
-		if ($scope.sisternaAutomatica && $scope.nivelAgua < 100){
-			$scope.nivelAgua++;
-			$scope.temperaturaAguaActual-=0.5;
-			actualizarNivelTanque();
-		}
-		if ($scope.voltaje > 0 && !$scope.sisternaAutomatica){
-			if ($scope.temperaturaAguaActual < $scope.temperaturaAgua){
-				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
-				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
-				if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
-					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAgua);
-				}
-			}
-		} else {
-			if ($scope.nivelAgua < 100){
-				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) - 0.01;
-				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
-				if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
-					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
-				}
-			} else {
-				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
-				$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
-				if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
-					$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAgua);
-				}
-			}
-			
-		}
-		$timeout(function(){
-			actualizarAmbiente();
-			actualizarNivelBateria();
-		}, 500);
-	}
+	  function actualizarAmbiente(){
+	  	if ($scope.sisternaAutomatica && $scope.nivelAgua < 100){
+	  		$scope.nivelAgua++;
+	  		actualizarNivelTanque();
+	  	}
+	  	if ($scope.voltaje > 0 && !$scope.sisternaAutomatica){
+	  		if ($scope.temperaturaAguaActual < $scope.temperaturaAgua){
+	  			$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
+	  			$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+	  			if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
+	  				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAgua);
+	  			}
+	  		}
+	  	} else {
+	  		if ($scope.nivelAgua < 100){
+	  			$scope.temperaturaAguaActual -= 0.01;
+	  			$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+	  			if ($scope.temperaturaAguaActual < $scope.temperaturaAmbiente){
+	  				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAmbiente);
+	  			}
+	  		} else {
+	  			$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAguaActual) + 0.05;
+	  			$scope.temperaturaAguaActual = $scope.temperaturaAguaActual.toFixed(2);
+	  			if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
+	  				$scope.temperaturaAguaActual = parseFloat($scope.temperaturaAgua);
+	  			}
+	  		}
+	  	}
+	  	if ($scope.nivelAgua == 0){
+	  		$scope.temperaturaAguaActual = 0;
+	  	}
+	  	if ($scope.temperaturaAguaActual > $scope.temperaturaAgua){
+	  		$scope.voltaje = 0;
+	  	} else {
+	  		$scope.posicionarSol();
+	  	}
 
-	function actualizarNivelBateria(){
-		if ($scope.bateriaCargando) {
-			$scope.bateriaNivel+=1;
-		}else{
-			$scope.bateriaNivel-= 1;
-		};
-		actualizarBateria();
-	}
+	  	if ($scope.voltaje > 0) {
+	  		if ($scope.bateriaNivel < 100){
+	  			$scope.bateriaNivel += 0.5;
+	  		}
+	  	} else {
+	  		if ($scope.bateriaNivel > 0){
+	  			$scope.bateriaNivel -= 0.5;
+	  		}
+	  	};
+	  	$('#porcentaje-bateria').css('width', $scope.bateriaNivel + '%');
 
-	/* Acutalizando nivel de batería */
-	function actualizarBateria(){
-		if (scope.bateriaNivel > 90) {
-			document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7','celda8').style.backgroundColor = #00FF00;
-		}else{
-			if (scope.bateriaNivel > 80) {
-				document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7').style.backgroundColor = #00FF00;
-			} else{
-				if (scope.bateriaNivel > 70) {
-					document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6').style.backgroundColor = #00FF00;
-				} else{
-					if (scope.bateriaNivel > 60) {
-						document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5').style.backgroundColor = #00FF00;
-					} else{
-						if (scope.bateriaNivel > 50) {
-							document.getElementById('celda0','celda1','celda2','celda3','celda4').style.backgroundColor = #00FF00;
-						} else{
-							if (scope.bateriaNivel > 40) {
-								document.getElementById('celda0','celda1','celda2','celda3').style.backgroundColor = #00FF00;
-							} else{
-								if (scope.bateriaNivel > 30) {
-									document.getElementById('celda0','celda1','celda2').style.backgroundColor = #00FF00;
-								} else{
-									if (scope.bateriaNivel > 20) {
-										document.getElementById('celda0','celda1').style.backgroundColor = #00FF00;
-									} else{
-										if (scope.bateriaNivel > 10) {
-											document.getElementById('celda0').style.backgroundColor = #00FF00;
-										} else{
-											if (scope.bateriaNivel > 0) {
-												document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7','celda8', 'celda9').style.backgroundColor = #FFFFFF;
-											} else{
-												document.getElementById('celda0','celda1','celda2','celda3','celda4','celda5','celda6','celda7','celda8', 'celda9').style.backgroundColor = #00FF00;
-											};
-										};
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	}
+	  	$timeout(function(){
+	  		actualizarAmbiente();
+	  	}, 500);
+	  }
 
-	actualizarNivelTanque();
-	actualizarAmbiente();
+	  actualizarNivelTanque();
+	  actualizarAmbiente();
 
 
-
-
-
-}]);
+	}]);
